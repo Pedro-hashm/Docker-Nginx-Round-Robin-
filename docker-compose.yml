@@ -1,0 +1,21 @@
+version: '3.7'
+services:
+    app:
+      build: app
+
+    nginx:
+      container_name: nginx
+      build: nginx
+      ports:
+        - 80:80
+      depends_on:
+        - app
+        - mult
+
+    mult:
+      build: mult
+      environment:
+        NODE_ENV: production
+
+    
+
